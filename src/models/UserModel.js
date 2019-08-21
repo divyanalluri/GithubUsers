@@ -14,4 +14,7 @@ export default class UserModel {
   disableLoader() {
     this.repoStatus = 'success';
   }
+  errorLoader() {
+    this.repoStatus = 'error';
+  }
 }
