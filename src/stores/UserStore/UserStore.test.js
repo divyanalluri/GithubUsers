@@ -22,5 +22,11 @@ test("success state testing",()=>{
   expect(userStore.success).toBe(true);
   
 })
-
+test("error case testing",()=>{
+    var userService=new UserService()
+  var userStore = new UserStore(userService);
+  userStore.setError()
+  expect(userStore.error).toBe(true);
+  
+})
 });
