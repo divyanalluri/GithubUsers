@@ -10,4 +10,8 @@ describe('test cases for user model', () => {
     userModel.enableLoader();
     expect(userModel.repoStatus).toBe('loading');
   });
+  test('testing whether the value of isLoading is success after calling enableLoader function', () => {
+    userModel.disableLoader();
+    expect(userModel.repoStatus).toBe('success');
+  });
 });
