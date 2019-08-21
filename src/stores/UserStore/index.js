@@ -24,6 +24,10 @@ getUsers()
       })
       .catch(err => console.log("error" +err));
   }
-  
+  @action.bound
+  setSucess(){
+      this.success=true
+  }
+ 
  }
 export default UserStore;
