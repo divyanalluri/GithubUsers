@@ -28,6 +28,9 @@ getUsers()
   setSucess(){
       this.success=true
   }
- 
+  @action.bound
+  setError(){
+      this.error=true
+  }
  }
 export default UserStore;
