@@ -11,4 +11,7 @@ export default class UserModel {
   enableLoader() {
     this.repoStatus = 'loading';
   }
+  disableLoader() {
+    this.repoStatus = 'success';
+  }
 }
