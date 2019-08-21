@@ -1,1 +1,3 @@
-export default class UserServices {}
+export default class UserServices {
+  getRepos(apiUrl) {}
+}
