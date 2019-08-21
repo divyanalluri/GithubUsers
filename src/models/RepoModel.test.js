@@ -5,7 +5,7 @@ describe('test cases for repo model', () => {
     const repo = {name: 'repoName', stargazers_count: 2, forks: 3};
     const repoModel = new RepoModel(repo);
     expect(repoModel.name).toBe('repoName');
-    expect(repoModel.stargazers_count).toBe(2);
-    expect(repoModel.forks).toBe(3);
+    expect(repoModel.starsCount).toBe(2);
+    expect(repoModel.forksCount).toBe(3);
   });
 });
