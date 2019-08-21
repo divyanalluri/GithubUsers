@@ -6,23 +6,22 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Text,View} from "react-native"
+import React, { Component } from 'react';
+import { Text, ScrollView } from "react-native"
 import Users from "./src/components/Users"
 import stores from "./src/stores"
 
 class App extends Component {
-  componentDidMount()
-  {
+  componentDidMount() {
     stores.userStore.getUsers()
   }
-  render(){
-  return (
-    <View >
-     <Users userStore={stores.userStore} />
-    </View>
-  );
-};
+  render() {
+    return (
+      <ScrollView >
+        <Users userStore={stores.userStore} />
+      </ScrollView>
+    );
+  };
 }
 
 
