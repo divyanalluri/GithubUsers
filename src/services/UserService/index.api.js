@@ -1,7 +1,6 @@
-import userslist from "../users.json";
 class UserService {
   getUsers() {
-    return userslist;
+    return fetch("https://api.github.com/users?since=135")
   }
 }
 export default UserService;
