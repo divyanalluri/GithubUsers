@@ -14,4 +14,8 @@ describe('test cases for user model', () => {
     userModel.disableLoader();
     expect(userModel.repoStatus).toBe('success');
   });
+  test('testing whether the value of isLoading is error after calling errorLoader function', () => {
+    userModel.errorLoader();
+    expect(userModel.repoStatus).toBe('error');
+  });
 });
