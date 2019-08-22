@@ -1,3 +1,5 @@
 export default class UserServices {
-  getRepos(apiUrl) {}
+  getRepos() {
+    return fetch('https://api.github.com/users/simonjefford/repos');
+  }
 }

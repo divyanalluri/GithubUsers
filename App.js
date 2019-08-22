@@ -5,13 +5,11 @@
  * @format
  * @flow
  */
-
-import React, {Fragment} from 'react';
-
-import {Header} from 'react-native';
+import React from 'react';
+import UserRepos from './src/components/UserRepos';
 
 const App = () => {
-  return <Fragment />;
+  return <UserRepos />;
 };
 
 export default App;

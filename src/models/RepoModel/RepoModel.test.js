@@ -1,4 +1,4 @@
-import RepoModel from './RepoModel';
+import RepoModel from '.';
 
 describe('test cases for repo model', () => {
   test('test case to check values in repo model', () => {
