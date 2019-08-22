@@ -12,14 +12,13 @@ export const RepoText = styled.Text`
   margin-left: 10px;
   font-size: 25;
 `;
-export const Features = styled.Text`
-  margin-left: 10;
-  height: 30;
-  width: 150;
+export const Features = styled.View`
+  margin-left: 10px;
+  width: 100;
   flex-direction: row;
-  justify-content: space-evenly;
 `;
 export const Property = styled.Text`
+  margin-left: 5px;
   font-weight: 100;
   font-size: 18;
 `;
@@ -29,6 +28,5 @@ export const Icon = styled.Image`
 `;
 
 export const FeatureBox = styled.View`
-  height: 40;
   flex-direction: row;
 `;

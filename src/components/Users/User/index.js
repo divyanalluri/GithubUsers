@@ -3,9 +3,8 @@ import {TouchableHighlight} from 'react-native';
 
 import {UserImage, UserName, UserContainer} from './styledcomponents';
 
-import RouterAction from '../../../Utils/RouterAction';
+import routerAction from '../../../Utils/RouterAction';
 
-const routerAction = new RouterAction();
 class User extends Component {
   onClickUser = () => {
     routerAction.getRepoScreen(this.props.user);
