@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const RepoContainer = styled.View`
-  height: 120;
+  height: 100;
   width: ${props => props.width};
   border-bottom-color: grey;
   border-bottom-width: 1;
@@ -13,9 +13,21 @@ export const RepoText = styled.Text`
   font-size: 25;
 `;
 export const Features = styled.Text`
-  margin-left: 15px;
+  margin-left: 10;
+  height: 30;
+  width: 150;
   flex-direction: row;
+  justify-content: space-evenly;
 `;
 export const Property = styled.Text`
-  font-size: 20;
+  font-size: 25;
+`;
+export const Icon = styled.Image`
+  height: 25;
+  width: 25;
+`;
+
+export const FeatureBox = styled.View`
+  height: 40;
+  flex-direction: row;
 `;

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { FlatList, Dimensions, ActivityIndicator } from 'react-native';
-import { observer } from 'mobx-react';
+import React, {Component} from 'react';
+import {FlatList, Dimensions, ActivityIndicator} from 'react-native';
+import {observer} from 'mobx-react';
 
 import UserRepo from './UserRepo';
-import { Header, HeaderText, RepoList, ErrorText } from './StyledComponents';
+import {Header, HeaderText, RepoList, ErrorText} from './StyledComponents';
 
 import APIStatus from '../../constants/APIStatus';
 
@@ -22,7 +22,7 @@ class UserRepos extends Component {
           <FlatList
             data={this.props.user.usersRepoList}
             showsVerticalScrollIndicator={true}
-            renderItem={({ item }) => <UserRepo repo={item} />}
+            renderItem={({item}) => <UserRepo repo={item} />}
           />
         );
       case APIStatus.loading:
@@ -34,9 +34,6 @@ class UserRepos extends Component {
   render() {
     return (
       <>
-        <Header width={width}>
-          <HeaderText>{this.props.user.name}</HeaderText>
-        </Header>
         <RepoList>{this.renderRepoList()}</RepoList>
       </>
     );

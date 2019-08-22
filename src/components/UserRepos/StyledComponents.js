@@ -9,9 +9,7 @@ export const Header = styled.View`
   justify-content: space-around;
   align-items: center;
 `;
-export const RepoList = styled.View`
-  margin-top:70;
-`;
+export const RepoList = styled.View``;
 export const HeaderText = styled.Text`
   color: white;
   font-size: 20;
