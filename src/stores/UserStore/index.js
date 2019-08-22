@@ -4,7 +4,7 @@ import UserServices from '../../services/RepoServices/index.api';
 
 import User from "../../models/User"
 
-import { status } from "./constants"
+import APIStatus from "../../constants/APIStatus"
 
 class UserStore {
   @observable users = []
@@ -26,7 +26,7 @@ class UserStore {
   getUsers() {
 
     this.service.getUsers().then(res => {
-      this.setUserAPIStatus(status.LOADING)
+      this.setUserAPIStatus(APIStatus.loading)
       if (res.ok) {
         return res.json();
       } else {
@@ -37,9 +37,9 @@ class UserStore {
         userAPI.map(user => {
           this.addUser(user)
         })
-        this.setUserAPIStatus(status.SUCCESS)
+        this.setUserAPIStatus(APIStatus.success)
       })
-      .catch(err => { this.setUserAPIStatus(status.ERROR) })
+      .catch(err => { this.setUserAPIStatus(APIStatus.error) })
   }
 
 }

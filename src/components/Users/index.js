@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { View, FlatList, ActivityIndicator, Text } from "react-native"
 import { observer } from "mobx-react";
 
-import { status } from "../../stores/UserStore/constants"
+import APIStatus from "../../constants/APIStatus"
 
 import User from "./User"
 
@@ -11,7 +11,7 @@ class Users extends Component {
 
   renderUsers() {
     switch (this.props.userStore.userAPIStatus) {
-      case status.SUCCESS:
+      case APIStatus.success:
         return (
           <FlatList
             data={this.props.userStore.userInfo}
@@ -19,9 +19,9 @@ class Users extends Component {
             renderItem={({ item }) => <User user={item} key={item.name} />}
           />
         );
-      case status.LOADING:
+      case APIStatus.loading:
         return <ActivityIndicator size="large" color="#0000ff" />;
-      case status.ERROR:
+      case APIStatus.error:
         return <Text>Error while loading users...</Text>;
     }
   }
