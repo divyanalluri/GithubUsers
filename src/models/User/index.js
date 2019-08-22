@@ -1,16 +1,16 @@
 import {observable} from 'mobx';
 
-import RepoModel from '../RepoModel';
+import Repo from '../Repo';
 
 import APIStatus from '../../constants/APIStatus';
-export default class UserModel {
+export default class User {
   @observable usersRepoList = [];
   @observable repoAPIStatus = '';
   constructor(serviceName) {
     this.serviceName = serviceName;
   }
   getReposList() {
-    this.enableLoader();
+    this.setReposAPIStatus(APIStatus.loading);
     if (this.usersRepoList.length === 0) {
       this.serviceName
         .getRepos()
@@ -18,23 +18,17 @@ export default class UserModel {
           if (response.ok) {
             return response.json();
           } else {
-            this.errorLoader();
+            this.setReposAPIStatus(APIStatus.error);
             return Promise.reject;
           }
         })
         .then(reposList => {
-          this.usersRepoList = reposList.map(repo => new RepoModel(repo));
-          this.disableLoader();
+          this.usersRepoList = reposList.map(repo => new Repo(repo));
+          this.setReposAPIStatus(APIStatus.success);
         });
     }
   }
-  enableLoader() {
-    this.repoAPIStatus = APIStatus.loading;
-  }
-  disableLoader() {
-    this.repoAPIStatus = APIStatus.success;
-  }
-  errorLoader() {
-    this.repoAPIStatus = APIStatus.error;
+  setReposAPIStatus(status) {
+    this.repoAPIStatus = status;
   }
 }

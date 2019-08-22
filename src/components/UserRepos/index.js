@@ -5,24 +5,24 @@ import {observer} from 'mobx-react';
 import UserRepo from './UserRepo';
 import {Header, HeaderText, RepoList, ErrorText} from './StyledComponents';
 
-import UserModel from '../../models/UserModel';
+import User from '../../models/User';
 import UserServices from '../../services/RepoServices/index.api';
 import APIStatus from '../../constants/APIStatus';
 
 const width = Dimensions.get('window').width;
 
-const userModel = new UserModel(new UserServices());
+const user = new User(new UserServices());
 @observer
 class UserRepos extends Component {
   componentDidMount = () => {
-    userModel.getReposList();
+    user.getReposList();
   };
   renderRepoList = () => {
-    switch (userModel.repoAPIStatus) {
+    switch (user.repoAPIStatus) {
       case APIStatus.success:
         return (
           <FlatList
-            data={userModel.usersRepoList}
+            data={user.usersRepoList}
             showsVerticalScrollIndicator={true}
             renderItem={({item}) => <UserRepo repo={item} />}
           />

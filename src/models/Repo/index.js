@@ -1,4 +1,4 @@
-export default class RepoModel {
+export default class Repo {
   name = '';
   starsCount = 0;
   forksCount = 0;
