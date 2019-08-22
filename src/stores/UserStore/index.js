@@ -1,24 +1,25 @@
 import { observable, action } from "mobx";
 
 import UserModel from "../../models/UserModel"
+import { status } from "./constants"
 
 class UserStore {
   @observable users = []
   @observable userInfo = []
-  @observable success = false
-  @observable error = false
+  @observable userAPIStatus
+  @observable userAPIError
 
   constructor(userservice) {
     this.service = userservice
   }
 
   @action.bound
-  UserAPIStatus() {
-    this.success = true
+  setUserAPIStatus() {
+    this.userAPIStatus = status.SUCCESS
   }
   @action.bound
-  UserAPIError() {
-    this.error = true
+  setUserAPIError() {
+    this.userAPIError = status.ERROR
   }
   addUser(user) {
     this.userInfo.push(new UserModel(user));
@@ -37,9 +38,9 @@ class UserStore {
         userAPI.map(user => {
           this.addUser(user)
         })
-
+        this.setUserAPIStatus()
       })
-      .catch(err => console.log("error" + err));
+      .catch(err => { this.setUserAPIError() })
   }
 
 }

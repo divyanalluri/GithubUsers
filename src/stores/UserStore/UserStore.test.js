@@ -6,15 +6,15 @@ describe("UserStore", () => {
   test("success state testing", () => {
     var userService = new UserService()
     var userStore = new UserStore(userService);
-    userStore.UserAPIStatus()
-    expect(userStore.success).toBe(true);
+    userStore.setUserAPIStatus()
+    expect(userStore.userAPIStatus).toBe(true);
 
   })
   test("error case testing", () => {
     var userService = new UserService()
     var userStore = new UserStore(userService);
-    userStore.UserAPIError()
-    expect(userStore.error).toBe(true);
+    userStore.setUserAPIError()
+    expect(userStore.userAPIError).toBe(true);
 
   })
 });
