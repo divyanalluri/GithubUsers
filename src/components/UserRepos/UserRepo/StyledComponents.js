@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const RepoContainer = styled.View`
   height: 120;
   width: ${props => props.width};
@@ -12,7 +13,7 @@ export const RepoText = styled.Text`
   font-size: 25;
 `;
 export const Features = styled.Text`
-  margin-left: 10px;
+  margin-left: 15px;
   flex-direction: row;
 `;
 export const Property = styled.Text`

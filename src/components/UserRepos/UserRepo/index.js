@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Text, Dimensions} from 'react-native';
+import {Dimensions} from 'react-native';
+
 import {RepoContainer, RepoText, Features, Property} from './StyledComponents';
+
 const width = Dimensions.get('window').width;
 
 export default class UserRepo extends Component {

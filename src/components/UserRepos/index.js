@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import {View, FlatList, Dimensions, Text} from 'react-native';
+import {FlatList, Dimensions, ActivityIndicator} from 'react-native';
+import {observer} from 'mobx-react';
+
 import UserRepo from './UserRepo';
+import {Header, HeaderText, RepoList, ErrorText} from './StyledComponents';
+
 import UserModel from '../../models/UserModel';
 import UserServices from '../../services/RepoServices/index.api';
-import {observer} from 'mobx-react';
-import {Header, HeaderText} from './StyledComponents';
+import APIStatus from '../../constants/APIStatus';
+
 const width = Dimensions.get('window').width;
 
 const userModel = new UserModel(new UserServices());
@@ -13,9 +17,21 @@ class UserRepos extends Component {
   componentDidMount = () => {
     userModel.getReposList();
   };
-  displayRepos = () => {
-    console.log('hello');
-    return userModel.usersRepoList.map(repo => <UserRepo repo={repo} />);
+  renderRepoList = () => {
+    switch (userModel.repoAPIStatus) {
+      case APIStatus.success:
+        return (
+          <FlatList
+            data={userModel.usersRepoList}
+            showsVerticalScrollIndicator={true}
+            renderItem={({item}) => <UserRepo repo={item} />}
+          />
+        );
+      case APIStatus.loading:
+        return <ActivityIndicator size="large" color="#0000ff" />;
+      default:
+        return <ErrorText>Error while loading repos...</ErrorText>;
+    }
   };
   render() {
     return (
@@ -23,11 +39,7 @@ class UserRepos extends Component {
         <Header width={width}>
           <HeaderText>User Name</HeaderText>
         </Header>
-        <FlatList
-          data={userModel.usersRepoList}
-          showsVerticalScrollIndicator={true}
-          renderItem={({item}) => <UserRepo repo={item} />}
-        />
+        <RepoList>{this.renderRepoList()}</RepoList>
       </>
     );
   }
