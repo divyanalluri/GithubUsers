@@ -20,11 +20,12 @@ export const Features = styled.Text`
   justify-content: space-evenly;
 `;
 export const Property = styled.Text`
-  font-size: 25;
+  font-weight: 100;
+  font-size: 18;
 `;
 export const Icon = styled.Image`
-  height: 25;
-  width: 25;
+  height: 20;
+  width: 20;
 `;
 
 export const FeatureBox = styled.View`

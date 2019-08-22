@@ -20,11 +20,11 @@ export default class UserRepo extends Component {
         <FeatureBox>
           <Features>
             <Icon source={require('./star.png')} />
-            <Property>Stars: {this.props.repo.starsCount} </Property>
+            <Property> Stars: {this.props.repo.starsCount} </Property>
           </Features>
           <Features>
             <Icon source={require('./fork.png')} />
-            <Property>Forks: {this.props.repo.forksCount}</Property>
+            <Property> Forks: {this.props.repo.forksCount}</Property>
           </Features>
         </FeatureBox>
       </RepoContainer>
