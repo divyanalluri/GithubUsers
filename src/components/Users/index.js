@@ -1,8 +1,8 @@
 import React, { Component } from "react"
-import { View } from "react-native"
+import { View, FlatList, ActivityIndicator } from "react-native"
 import { observer } from "mobx-react";
 
-import stores from "../../stores"
+import { status } from "../../stores/UserStore/constants"
 
 import User from "./User"
 
@@ -10,16 +10,20 @@ import User from "./User"
 class Users extends Component {
 
   renderUsers() {
-    console.log(stores.userStore.userInfo)
-    return stores.userStore.userInfo.map(user => (
 
-      <User user={user} key={user.name} userStore={stores.userStore} />
-    ))
+    return (
+      <FlatList
+        data={this.props.userStore.userInfo}
+        showsVerticalScrollIndicator={true}
+        renderItem={({ item }) => <User user={item} key={item.name} />}
+      />
+    );
   }
   render() {
     return (
       <View>
-        {this.renderUsers()}
+        {this.props.userStore.userAPIStatus === status.SUCCESS ?
+          this.renderUsers() : (<ActivityIndicator size="large" color="#0000ff" />)}
       </View>)
   }
 }

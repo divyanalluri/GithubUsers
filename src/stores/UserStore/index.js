@@ -1,9 +1,10 @@
 import { observable, action } from "mobx";
 
-import User from "../../models/User"
-import { status } from "./constants"
-
 import UserServices from '../../services/RepoServices/index.api';
+
+import User from "../../models/User"
+
+import { status } from "./constants"
 
 class UserStore {
   @observable users = []
