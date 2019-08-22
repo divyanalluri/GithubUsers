@@ -1,6 +1,7 @@
+import { UsersURL } from "../../stores/Utils/constants"
 class UserService {
   getUsers() {
-    return fetch("https://api.github.com/users?since=135")
+    return fetch(UsersURL.URL)
   }
 }
 export default UserService;

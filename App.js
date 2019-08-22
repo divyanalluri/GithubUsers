@@ -7,7 +7,8 @@
  */
 
 import React, { Component } from 'react';
-import { Text, ScrollView } from "react-native"
+import { ScrollView } from "react-native"
+
 import Users from "./src/components/Users"
 import stores from "./src/stores"
 

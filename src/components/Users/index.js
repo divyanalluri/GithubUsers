@@ -1,8 +1,11 @@
 import React, { Component } from "react"
-import User from "./User"
-import { View, Text } from "react-native"
+import { View } from "react-native"
 import { observer } from "mobx-react";
+
 import stores from "../../stores"
+
+import User from "./User"
+
 @observer
 class Users extends Component {
 
