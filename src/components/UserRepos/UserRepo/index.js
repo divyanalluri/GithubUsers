@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Dimensions} from 'react-native';
+import React, { Component } from 'react';
+import { Dimensions } from 'react-native';
 
-import {RepoContainer, RepoText, Features, Property} from './StyledComponents';
+import { RepoContainer, RepoText, Features, Property } from './StyledComponents';
 
 const width = Dimensions.get('window').width;
 

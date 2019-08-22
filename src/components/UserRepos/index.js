@@ -1,30 +1,28 @@
-import React, {Component} from 'react';
-import {FlatList, Dimensions, ActivityIndicator} from 'react-native';
-import {observer} from 'mobx-react';
+import React, { Component } from 'react';
+import { FlatList, Dimensions, ActivityIndicator } from 'react-native';
+import { observer } from 'mobx-react';
 
 import UserRepo from './UserRepo';
-import {Header, HeaderText, RepoList, ErrorText} from './StyledComponents';
+import { Header, HeaderText, RepoList, ErrorText } from './StyledComponents';
 
-import User from '../../models/User';
-import UserServices from '../../services/RepoServices/index.api';
 import APIStatus from '../../constants/APIStatus';
 
 const width = Dimensions.get('window').width;
 
-const user = new User(new UserServices());
 @observer
 class UserRepos extends Component {
   componentDidMount = () => {
-    user.getReposList();
+    this.props.user.getReposList();
   };
+
   renderRepoList = () => {
-    switch (user.repoAPIStatus) {
+    switch (this.props.user.repoAPIStatus) {
       case APIStatus.success:
         return (
           <FlatList
-            data={user.usersRepoList}
+            data={this.props.user.usersRepoList}
             showsVerticalScrollIndicator={true}
-            renderItem={({item}) => <UserRepo repo={item} />}
+            renderItem={({ item }) => <UserRepo repo={item} />}
           />
         );
       case APIStatus.loading:
@@ -37,7 +35,7 @@ class UserRepos extends Component {
     return (
       <>
         <Header width={width}>
-          <HeaderText>User Name</HeaderText>
+          <HeaderText>{this.props.user.name}</HeaderText>
         </Header>
         <RepoList>{this.renderRepoList()}</RepoList>
       </>

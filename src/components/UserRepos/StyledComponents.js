@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const Header = styled.View`
-  height: 100;
+  height: 70;
   position: absolute;
   top: 0;
   width: ${props => props.width};
@@ -10,7 +10,7 @@ export const Header = styled.View`
   align-items: center;
 `;
 export const RepoList = styled.View`
-  margin-top: 100px;
+  margin-top:70;
 `;
 export const HeaderText = styled.Text`
   color: white;

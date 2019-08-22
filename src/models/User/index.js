@@ -1,19 +1,29 @@
-import {observable} from 'mobx';
+import { observable } from 'mobx';
 
 import Repo from '../Repo';
+
+
 
 import APIStatus from '../../constants/APIStatus';
 export default class User {
   @observable usersRepoList = [];
   @observable repoAPIStatus = '';
-  constructor(serviceName) {
+  name
+  avatarUrl
+  reposUrl
+  constructor(userInfo, serviceName) {
+
     this.serviceName = serviceName;
+    this.name = userInfo.login;
+    this.avatarUrl = userInfo.avatar_url;
+    this.reposUrl = userInfo.repos_url;
   }
   getReposList() {
-    this.setReposAPIStatus(APIStatus.loading);
+
     if (this.usersRepoList.length === 0) {
+      this.setReposAPIStatus(APIStatus.loading);
       this.serviceName
-        .getRepos()
+        .getRepos(this.reposUrl)
         .then(response => {
           if (response.ok) {
             return response.json();
