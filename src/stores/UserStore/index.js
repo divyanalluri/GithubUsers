@@ -10,19 +10,14 @@ class UserStore {
   @observable users = []
   @observable userInfo = []
   @observable userAPIStatus
-  @observable userAPIError
 
   constructor(userservice) {
     this.service = userservice
   }
 
   @action.bound
-  setUserAPIStatus() {
-    this.userAPIStatus = status.SUCCESS
-  }
-  @action.bound
-  setUserAPIError() {
-    this.userAPIError = status.ERROR
+  setUserAPIStatus(value) {
+    this.userAPIStatus = value
   }
   addUser(user) {
     this.userInfo.push(new User(user, new UserServices()));
@@ -31,6 +26,7 @@ class UserStore {
   getUsers() {
 
     this.service.getUsers().then(res => {
+      this.setUserAPIStatus(status.LOADING)
       if (res.ok) {
         return res.json();
       } else {
@@ -41,9 +37,9 @@ class UserStore {
         userAPI.map(user => {
           this.addUser(user)
         })
-        this.setUserAPIStatus()
+        this.setUserAPIStatus(status.SUCCESS)
       })
-      .catch(err => { this.setUserAPIError() })
+      .catch(err => { this.setUserAPIStatus(status.ERROR) })
   }
 
 }
