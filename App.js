@@ -1,29 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React, { Component } from 'react';
-import { ScrollView } from "react-native"
-
-import Users from "./src/components/Users"
-import stores from "./src/stores"
+import { Router, Scene } from "react-native-router-flux";
+import HomeScreen from "./src/components/HomeScreen";
+import UserRepos from "./src/components/UserRepos";
 
 class App extends Component {
-  componentDidMount() {
-    stores.userStore.getUsers()
-  }
+
   render() {
     return (
-      <ScrollView >
-        <Users userStore={stores.userStore} />
-      </ScrollView>
+      <Router>
+        <Scene key="root" >
+          <Scene key="home" component={HomeScreen} title="Users" initial />
+          <Scene key="userRepos" component={UserRepos} title="repos" hideNavBar />
+        </Scene>
+      </Router>
     );
   };
 }
-
 
 export default App;

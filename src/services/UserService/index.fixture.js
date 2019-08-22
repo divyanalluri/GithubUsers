@@ -1,4 +1,4 @@
-import userslist from "../users.json";
+import userslist from "../../fixtures/users.json";
 class UserService {
   getUsers() {
     return userslist;

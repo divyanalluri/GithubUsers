@@ -1,7 +1,9 @@
 import { observable, action } from "mobx";
 
-import UserModel from "../../models/UserModel"
+import User from "../../models/User"
 import { status } from "./constants"
+
+import UserServices from '../../services/RepoServices/index.api';
 
 class UserStore {
   @observable users = []
@@ -22,7 +24,7 @@ class UserStore {
     this.userAPIError = status.ERROR
   }
   addUser(user) {
-    this.userInfo.push(new UserModel(user));
+    this.userInfo.push(new User(user, new UserServices()));
   }
   @action.bound
   getUsers() {
