@@ -13,11 +13,11 @@ class UserStore {
   }
 
   @action.bound
-  setUserAPIStatus() {
+  UserAPIStatus() {
     this.success = true
   }
   @action.bound
-  setUserAPIError() {
+  UserAPIError() {
     this.error = true
   }
   addUser(user) {
@@ -34,10 +34,9 @@ class UserStore {
       }
     })
       .then(userAPI => {
-        this.users = userAPI;
-        for (var i = 0; i < this.users.length; i++) {
-          this.addUser(this.users[i])
-        }
+        userAPI.map(user => {
+          this.addUser(user)
+        })
 
       })
       .catch(err => console.log("error" + err));

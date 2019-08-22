@@ -8,7 +8,7 @@ class User extends Component {
         return (
             <TouchableOpacity onPress={this._onPressButton}>
                 <UserContainer>
-                    <UserImage source={{ uri: this.props.user.avatar_url }} />
+                    <UserImage source={{ uri: this.props.user.avatarUrl }} />
                     <UserName>{this.props.user.name}</UserName>
                 </UserContainer>
             </TouchableOpacity>
