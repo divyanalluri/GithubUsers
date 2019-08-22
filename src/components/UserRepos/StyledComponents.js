@@ -1,19 +1,12 @@
 import styled from 'styled-components';
-export const Header = styled.View`
-  height: 70;
-  position: absolute;
-  top: 0;
+
+export const RepoList = styled.View`
+  height: ${props => props.height};
   width: ${props => props.width};
-  background-color: darkblue;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 `;
-export const RepoList = styled.View``;
-export const HeaderText = styled.Text`
-  color: white;
-  font-size: 20;
-`;
+
 export const ErrorText = styled.Text`
   font-weight: bold;
   color: red;

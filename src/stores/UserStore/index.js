@@ -1,49 +1,51 @@
-import { observable, action } from "mobx";
+import {observable, action} from 'mobx';
 
-import User from "../../models/User"
-import { status } from "./constants"
+import User from '../../models/User';
+import {status} from './constants';
 
 import UserServices from '../../services/RepoServices/index.api';
 
 class UserStore {
-  @observable users = []
-  @observable userInfo = []
-  @observable userAPIStatus
-  @observable userAPIError
+  @observable users = [];
+  @observable userInfo = [];
+  @observable userAPIStatus;
+  @observable userAPIError;
 
   constructor(userservice) {
-    this.service = userservice
+    this.service = userservice;
   }
 
   @action.bound
   setUserAPIStatus() {
-    this.userAPIStatus = status.SUCCESS
+    this.userAPIStatus = status.SUCCESS;
   }
   @action.bound
   setUserAPIError() {
-    this.userAPIError = status.ERROR
+    this.userAPIError = status.ERROR;
   }
   addUser(user) {
     this.userInfo.push(new User(user, new UserServices()));
   }
   @action.bound
   getUsers() {
-
-    this.service.getUsers().then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject();
-      }
-    })
+    this.service
+      .getUsers()
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return Promise.reject();
+        }
+      })
       .then(userAPI => {
         userAPI.map(user => {
-          this.addUser(user)
-        })
-        this.setUserAPIStatus()
+          this.addUser(user);
+        });
+        this.setUserAPIStatus();
       })
-      .catch(err => { this.setUserAPIError() })
+      .catch(err => {
+        this.setUserAPIError();
+      });
   }
-
 }
 export default UserStore;
