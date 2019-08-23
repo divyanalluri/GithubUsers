@@ -28,6 +28,7 @@ export default class UserRepo extends Component {
           <Features>
             <Icon source={require('./fork.png')} />
             <Property>{i18n.t("forks")}: {repo.forksCount}</Property>
+
           </Features>
         </FeatureBox>
       </RepoContainer>
