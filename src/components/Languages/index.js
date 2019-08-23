@@ -8,15 +8,15 @@ import { observer } from "mobx-react";
 export default class Languages extends Component {
     onChangeEnglish = () => {
         stores.languagesStore.changeLanguage("english");
-        this.props.onChangeLanguage();
+
     };
     onChangeTelugu = () => {
         stores.languagesStore.changeLanguage("telugu");
-        this.props.onChangeLanguage();
+
     };
     onChangeHindi = () => {
         stores.languagesStore.changeLanguage("hindi");
-        this.props.onChangeLanguage();
+
     };
     render() {
         return (

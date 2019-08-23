@@ -11,14 +11,10 @@ import Languages from "./src/components/Languages";
 import stores, { hydrateLanguageStore } from "./src/stores"
 import { setI18nConfig } from "./src/components/ConfigFile"
 
+import routerAction from "./src/NavigationUtils/RouterAction"
 @observer
 class App extends Component {
 
-
-
-  onChangeLanguage = () => {
-    Actions.home({ type: ActionConst.RESET });
-  };
   render() {
     setI18nConfig(stores.languagesStore.language)
     return (
@@ -31,7 +27,7 @@ class App extends Component {
             initial
             navigationBarStyle={styles.navigationBar}
             onRight={() => {
-              Actions.languages();
+              routerAction.getLanguages()
             }}
             rightTitle="Language"
           />

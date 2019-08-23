@@ -4,7 +4,7 @@ import i18n from "i18n-js";
 
 import { UserImage, UserName, UserContainer } from './styledcomponents';
 
-import routerAction from "../../../Utils/RouterAction"
+import routerAction from "../../../NavigationUtils/RouterAction"
 class User extends Component {
   onClickUser = () => {
     routerAction.getRepoScreen(this.props.user);
