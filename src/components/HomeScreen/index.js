@@ -1,6 +1,7 @@
-import {ScrollView} from 'react-native';
-import React, {Component} from 'react';
-import {observer} from 'mobx-react';
+import { ScrollView } from 'react-native';
+import React, { Component } from 'react';
+import { observer } from 'mobx-react';
+
 
 import Users from '../Users';
 import User from '../Users/User';

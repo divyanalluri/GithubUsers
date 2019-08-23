@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import {Dimensions} from 'react-native';
+import React, { Component } from 'react';
+import { Dimensions } from 'react-native';
+import i18n from "i18n-js";
 
 import {
   RepoContainer,
@@ -14,7 +15,7 @@ const width = Dimensions.get('window').width;
 
 export default class UserRepo extends Component {
   render() {
-    const {repo} = this.props;
+    const { repo } = this.props;
 
     return (
       <RepoContainer width={width}>
@@ -22,11 +23,12 @@ export default class UserRepo extends Component {
         <FeatureBox>
           <Features>
             <Icon source={require('./star.png')} />
-            <Property>stars: {repo.starsCount} </Property>
+            <Property>{i18n.t("stars")}: {repo.starsCount} </Property>
           </Features>
           <Features>
             <Icon source={require('./fork.png')} />
-            <Property>forks: {repo.forksCount}</Property>
+            <Property>{i18n.t("forks")}: {repo.forksCount}</Property>
+
           </Features>
         </FeatureBox>
       </RepoContainer>

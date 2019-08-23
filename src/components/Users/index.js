@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {View, FlatList, ActivityIndicator, Dimensions} from 'react-native';
-import {observer} from 'mobx-react';
+import React, { Component } from 'react';
+import { View, FlatList, ActivityIndicator, Dimensions } from 'react-native';
+import { observer } from 'mobx-react';
 
 import APIStatus from '../../constants/APIStatus';
 
 import User from './User';
 
-import {DisplayStatus, ErrorText} from '../UserRepos/StyledComponents';
+import { DisplayStatus, ErrorText } from '../UserRepos/StyledComponents';
 
 const width = Dimensions.get('window').width;
 
@@ -19,7 +19,8 @@ class Users extends Component {
           <FlatList
             data={this.props.userStore.userInfo}
             showsVerticalScrollIndicator={true}
-            renderItem={({item}) => <User user={item} key={item.name} />}
+
+            renderItem={({ item }) => <User user={item} key={item.name} />}
             keyExtractor={item => item.name}
           />
         );
