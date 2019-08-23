@@ -21,7 +21,8 @@ class UserRepos extends Component {
           <FlatList
             data={this.props.user.usersRepoList}
             showsVerticalScrollIndicator={true}
-            renderItem={({item}) => <UserRepo repo={item} />}
+            renderItem={({item}) => <UserRepo repo={item} key={item.name} />}
+            keyExtractor={item => item.name}
           />
         );
       case APIStatus.loading:

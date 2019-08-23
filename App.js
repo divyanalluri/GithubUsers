@@ -12,7 +12,7 @@ class App extends Component {
           <Scene
             key="home"
             component={HomeScreen}
-            title="Users"
+            title="users"
             initial
             navigationBarStyle={styles.navigationBar}
           />
