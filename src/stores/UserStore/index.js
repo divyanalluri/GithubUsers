@@ -1,27 +1,21 @@
 import {observable, action} from 'mobx';
 
-import User from '../../models/User';
-import {status} from './constants';
-
 import UserServices from '../../services/RepoServices/index.api';
+import User from '../../models/User';
+import APIStatus from '../../constants/APIStatus';
 
 class UserStore {
   @observable users = [];
   @observable userInfo = [];
   @observable userAPIStatus;
-  @observable userAPIError;
 
   constructor(userservice) {
     this.service = userservice;
   }
 
   @action.bound
-  setUserAPIStatus() {
-    this.userAPIStatus = status.SUCCESS;
-  }
-  @action.bound
-  setUserAPIError() {
-    this.userAPIError = status.ERROR;
+  setUserAPIStatus(value) {
+    this.userAPIStatus = value;
   }
   addUser(user) {
     this.userInfo.push(new User(user, new UserServices()));
@@ -31,6 +25,7 @@ class UserStore {
     this.service
       .getUsers()
       .then(res => {
+        this.setUserAPIStatus(APIStatus.loading);
         if (res.ok) {
           return res.json();
         } else {
@@ -41,10 +36,10 @@ class UserStore {
         userAPI.map(user => {
           this.addUser(user);
         });
-        this.setUserAPIStatus();
+        this.setUserAPIStatus(APIStatus.success);
       })
       .catch(err => {
-        this.setUserAPIError();
+        this.setUserAPIStatus(APIStatus.error);
       });
   }
 }
