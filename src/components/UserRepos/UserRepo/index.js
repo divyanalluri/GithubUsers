@@ -22,11 +22,11 @@ export default class UserRepo extends Component {
         <FeatureBox>
           <Features>
             <Icon source={require('./star.png')} />
-            <Property>Stars: {repo.starsCount} </Property>
+            <Property>stars: {repo.starsCount} </Property>
           </Features>
           <Features>
             <Icon source={require('./fork.png')} />
-            <Property>Forks: {repo.forksCount}</Property>
+            <Property>forks: {repo.forksCount}</Property>
           </Features>
         </FeatureBox>
       </RepoContainer>

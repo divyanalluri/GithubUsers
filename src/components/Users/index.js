@@ -20,6 +20,7 @@ class Users extends Component {
             data={this.props.userStore.userInfo}
             showsVerticalScrollIndicator={true}
             renderItem={({item}) => <User user={item} key={item.name} />}
+            keyExtractor={item => item.name}
           />
         );
       case APIStatus.loading:
