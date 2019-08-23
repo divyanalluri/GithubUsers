@@ -27,7 +27,7 @@ class App extends Component {
             initial
             navigationBarStyle={styles.navigationBar}
             onRight={() => {
-              routerAction.getLanguages()
+              routerAction.goToLanguageScreen()
             }}
             rightTitle="Language"
           />

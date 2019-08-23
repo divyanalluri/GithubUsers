@@ -7,7 +7,7 @@ import { UserImage, UserName, UserContainer } from './styledcomponents';
 import routerAction from "../../../NavigationUtils/RouterAction"
 class User extends Component {
   onClickUser = () => {
-    routerAction.getRepoScreen(this.props.user);
+    routerAction.goToRepoScreen(this.props.user);
   };
   render() {
     return (
