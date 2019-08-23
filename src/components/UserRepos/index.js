@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { FlatList, Dimensions, ActivityIndicator } from 'react-native';
-import { observer } from 'mobx-react';
+import React, {Component} from 'react';
+import {FlatList, ActivityIndicator, Dimensions, View} from 'react-native';
+import {observer} from 'mobx-react';
 
 import UserRepo from './UserRepo';
-import { Header, HeaderText, RepoList, ErrorText } from './StyledComponents';
+import {DisplayStatus, ErrorText} from './StyledComponents';
 
 import APIStatus from '../../constants/APIStatus';
-
 const width = Dimensions.get('window').width;
 
 @observer
@@ -22,24 +21,25 @@ class UserRepos extends Component {
           <FlatList
             data={this.props.user.usersRepoList}
             showsVerticalScrollIndicator={true}
-            renderItem={({ item }) => <UserRepo repo={item} />}
+            renderItem={({item}) => <UserRepo repo={item} />}
           />
         );
       case APIStatus.loading:
-        return <ActivityIndicator size="large" color="#0000ff" />;
+        return (
+          <DisplayStatus width={width}>
+            <ActivityIndicator size="large" color="grey" />
+          </DisplayStatus>
+        );
       default:
-        return <ErrorText>Error while loading repos...</ErrorText>;
+        return (
+          <DisplayStatus width={width}>
+            <ErrorText>Error while loading repos...</ErrorText>
+          </DisplayStatus>
+        );
     }
   };
   render() {
-    return (
-      <>
-        <Header width={width}>
-          <HeaderText>{this.props.user.name}</HeaderText>
-        </Header>
-        <RepoList>{this.renderRepoList()}</RepoList>
-      </>
-    );
+    return <View>{this.renderRepoList()}</View>;
   }
 }
 export default UserRepos;
