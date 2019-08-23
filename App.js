@@ -1,29 +1,49 @@
-import React, {Component} from 'react';
-import {Router, Scene} from 'react-native-router-flux';
-import {StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Router, Scene, Actions, ActionConst } from 'react-native-router-flux';
+import { StyleSheet } from 'react-native';
+import i18n from "i18n-js";
+import { observer } from 'mobx-react';
+
 import HomeScreen from './src/components/HomeScreen';
 import UserRepos from './src/components/UserRepos';
+import Languages from "./src/components/Languages";
 
+import stores, { hydrateLanguageStore } from "./src/stores"
+import { setI18nConfig } from "./src/components/ConfigFile"
+
+@observer
 class App extends Component {
+
+
+
+  onChangeLanguage = () => {
+    Actions.home({ type: ActionConst.RESET });
+  };
   render() {
+    setI18nConfig(stores.languagesStore.language)
     return (
-      <Router>
+      <Router key={stores.languagesStore.language} >
         <Scene key="root">
           <Scene
             key="home"
             component={HomeScreen}
-            title="Users"
+            title={i18n.t("users")}
             initial
             navigationBarStyle={styles.navigationBar}
+            onRight={() => {
+              Actions.languages();
+            }}
+            rightTitle="Language"
           />
           <Scene
             key="userRepos"
+            languagesStore={stores.languagesStore.language}
             component={UserRepos}
-            backButtonIma="white"
             navigationBarStyle={styles.navigationBar}
           />
+          <Scene key="languages" component={Languages} title="Select Languages" onChangeLanguage={this.onChangeLanguage} navigationBarStyle={styles.navigationBar} />
         </Scene>
-      </Router>
+      </ Router>
     );
   }
 }

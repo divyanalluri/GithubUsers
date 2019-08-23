@@ -4,11 +4,13 @@ import { observer } from "mobx-react";
 
 import Users from "../Users"
 import User from "../Users/User"
-
-import stores from "../../stores"
+import stores, { hydrateLanguageStore } from "../../stores"
+import { setI18nConfig } from "../ConfigFile"
 @observer
 class HomeScreen extends Component {
     componentDidMount() {
+        setI18nConfig(stores.languagesStore.language);
+        hydrateLanguageStore()
         stores.userStore.getUsers()
     }
     render() {

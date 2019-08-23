@@ -8,6 +8,7 @@ border-bottom-width:1px;
 border-bottom-color:grey
 `
 export const UserImage = styled.Image`
+background-color:grey;
 margin-left:15px;
 width:50px;
 height:50px;

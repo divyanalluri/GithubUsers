@@ -14,7 +14,7 @@ export const RepoText = styled.Text`
 `;
 export const Features = styled.View`
   margin-left: 10px;
-  width: 100;
+  width:50%;
   flex-direction: row;
 `;
 export const Property = styled.Text`
@@ -29,4 +29,5 @@ export const Icon = styled.Image`
 
 export const FeatureBox = styled.View`
   flex-direction: row;
+  justify-content:space-evenly;
 `;

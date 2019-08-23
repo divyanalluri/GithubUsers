@@ -27,6 +27,8 @@ target 'GithubUsers' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
+
   target 'GithubUsersTests' do
     inherit! :search_paths
     # Pods for testing
