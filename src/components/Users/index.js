@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import {View, FlatList, ActivityIndicator, Text} from 'react-native';
+import {View, FlatList, ActivityIndicator, Dimensions} from 'react-native';
 import {observer} from 'mobx-react';
 
 import APIStatus from '../../constants/APIStatus';
 
 import User from './User';
+
+import {DisplayStatus, ErrorText} from '../UserRepos/StyledComponents';
+
+const width = Dimensions.get('window').width;
 
 @observer
 class Users extends Component {
@@ -19,9 +23,17 @@ class Users extends Component {
           />
         );
       case APIStatus.loading:
-        return <ActivityIndicator size="large" color="#0000ff" />;
+        return (
+          <DisplayStatus width={width}>
+            <ActivityIndicator size="large" color="grey" />
+          </DisplayStatus>
+        );
       case APIStatus.error:
-        return <Text>Error while loading users...</Text>;
+        return (
+          <DisplayStatus width={width}>
+            <ErrorText>Error while loading users...</ErrorText>
+          </DisplayStatus>
+        );
     }
   }
   render() {

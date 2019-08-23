@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {FlatList, ActivityIndicator, Dimensions} from 'react-native';
+import {FlatList, ActivityIndicator, Dimensions, View} from 'react-native';
 import {observer} from 'mobx-react';
 
 import UserRepo from './UserRepo';
-import {RepoList, ErrorText} from './StyledComponents';
+import {DisplayStatus, ErrorText} from './StyledComponents';
 
 import APIStatus from '../../constants/APIStatus';
-const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 @observer
@@ -26,19 +25,21 @@ class UserRepos extends Component {
           />
         );
       case APIStatus.loading:
-        return <ActivityIndicator size="large" color="grey" />;
+        return (
+          <DisplayStatus width={width}>
+            <ActivityIndicator size="large" color="grey" />
+          </DisplayStatus>
+        );
       default:
-        return <ErrorText>Error while loading repos...</ErrorText>;
+        return (
+          <DisplayStatus width={width}>
+            <ErrorText>Error while loading repos...</ErrorText>
+          </DisplayStatus>
+        );
     }
   };
   render() {
-    return (
-      <>
-        <RepoList width={width} height={height}>
-          {this.renderRepoList()}
-        </RepoList>
-      </>
-    );
+    return <View>{this.renderRepoList()}</View>;
   }
 }
 export default UserRepos;

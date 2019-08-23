@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TouchableHighlight} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 import {UserImage, UserName, UserContainer} from './styledcomponents';
 
@@ -11,12 +11,12 @@ class User extends Component {
   };
   render() {
     return (
-      <TouchableHighlight onPress={this.onClickUser}>
+      <TouchableOpacity onPress={this.onClickUser}>
         <UserContainer>
           <UserImage source={{uri: this.props.user.avatarUrl}} />
           <UserName>{this.props.user.name}</UserName>
         </UserContainer>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
